@@ -6,7 +6,7 @@ const Footer = () => {
         <div>
             <footer data-theme="business" className="footer  p-10 text-white ">
                 <aside>
-                    <img src="https://www.payboostbills.com/static/media/pbblogo.2781af64db3db9d44aa5.png" className="w-32" alt="" />
+                    <img src="https://www.myboostrecharge.com/static/media/pbblogo.2781af64db3db9d44aa5.png" className="w-32" alt="" />
                     <h2 className="w-40">is an authorized national payment center. As an authorized national payment center it is pur duty to provide you with the highest customer service.</h2>
                 </aside>
                 <nav>
