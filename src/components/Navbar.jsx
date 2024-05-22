@@ -32,7 +32,7 @@ const Navbar = () => {
       <div className="flex-1 ml-5">
         <Link to={"/"}>
           <img
-            src="https://www.payboostbills.com/static/media/pbblogo.2781af64db3db9d44aa5.png"
+            src="https://www.myboostrecharge.com/static/media/pbblogo.2781af64db3db9d44aa5.png"
             className="w-20"
             alt="Logo"
           />
