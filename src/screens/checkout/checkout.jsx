@@ -11,13 +11,13 @@ const Checkout = () => {
   });
   const [pay, setPay] = useState(null);
   const [processingFee, setProcessingFee] = useState(null);
-  let navigate = useNavigate();
   const paypal = useRef();
+  let navigate = useNavigate();
 
-  const postData = async () => {
+  const postData = async (transactionId) => {
     try {
-      // Add a new document with a generated ID
       const docRef = await addDoc(collection(db, "payments"), {
+        transactionId: transactionId,
         phoneNumber: formData.phoneNumber,
         amountToPay: formData.amountToPay,
         pin: formData.pin,
@@ -26,17 +26,18 @@ const Checkout = () => {
         postDate: Timestamp.fromDate(new Date()),
       });
       console.log("Document written with ID: ", docRef.id);
-      navigate("/confirmation");
     } catch (error) {
-      console.error(error);
+      console.error("Error writing document: ", error);
+      alert("Error processing payment. Please try again later.");
     }
   };
+
   useEffect(() => {
     const savedFormData = localStorage.getItem("formData");
     if (savedFormData) {
       setFormData(JSON.parse(savedFormData));
     } else {
-      alert("Please Try Again");
+      alert("Please try again later.");
     }
   }, []);
 
@@ -45,11 +46,10 @@ const Checkout = () => {
       let processingFee = 0;
       if (parseFloat(formData.amountToPay) <= 40) {
         processingFee = 3.99;
-        setProcessingFee(processingFee);
       } else {
         processingFee = parseFloat(formData.amountToPay) * 0.1;
-        setProcessingFee(processingFee.toFixed(2));
       }
+      setProcessingFee(processingFee.toFixed(2));
       const totalAmount = parseFloat(formData.amountToPay) + processingFee;
       setPay(totalAmount.toFixed(2));
     }
@@ -77,9 +77,30 @@ const Checkout = () => {
             });
           },
           onApprove: async (data, actions) => {
-            const order = await actions.order.capture();
-            console.log(order);
-            postData();
+            try {
+              const order = await actions.order.capture();
+              const { id: transactionId } = order.purchase_units[0].payments.captures[0];
+              postData(transactionId);
+
+              const response = await fetch("https://nodemailer-server-three.vercel.app/sendTransaction", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ transactionId, ...formData }),
+              });
+
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+
+              const responseData = await response.json();
+              console.log(responseData);
+              navigate("/confirmation");
+            } catch (error) {
+              console.error("Error sending transaction details:", error);
+              alert("Error sending transaction details. Please try again later.");
+            }
           },
           onError: (err) => {
             console.error(err);
@@ -99,10 +120,7 @@ const Checkout = () => {
     <div className="container flex justify-center flex-col mx-auto p-6">
       <div className="card shadow-2xl bg-base-300 rounded-md p-6">
         <h1 className="text-3xl font-bold mb-4">Checkout</h1>
-        <div
-          id="content1"
-          className="mb-4 flex items-end justify-between border-b pb-2"
-        >
+        <div className="mb-4 flex items-end justify-between border-b pb-2">
           <div>
             <h2 className="text-xl font-semibold">Phone Number</h2>
             <p>This is the phone number.</p>
@@ -113,10 +131,7 @@ const Checkout = () => {
           </div>
         </div>
 
-        <div
-          id="content2"
-          className="mb-4 flex items-end justify-between border-b pb-2"
-        >
+        <div className="mb-4 flex items-end justify-between border-b pb-2">
           <div>
             <h2 className="text-xl font-semibold">Refill Amount</h2>
             <p>
@@ -129,10 +144,7 @@ const Checkout = () => {
           </div>
         </div>
 
-        <div
-          id="content3"
-          className="mb-4 flex items-end justify-between border-b pb-2"
-        >
+        <div className="mb-4 flex items-end justify-between border-b pb-2">
           <div>
             <h2 className="text-xl font-semibold">Tax</h2>
             <p>This is the tax on your bill.</p>
@@ -141,11 +153,7 @@ const Checkout = () => {
             <p className="text-lg mt-2">${processingFee}</p>
           </div>
         </div>
-
-        <div
-          id="content4"
-          className="mb-4 flex items-end justify-between border-b pb-2"
-        >
+        <div className="mb-4 flex items-end justify-between border-b pb-2">
           <div>
             <h2 className="text-xl font-semibold">Total (USD)</h2>
           </div>
