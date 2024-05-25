@@ -256,7 +256,7 @@ const Home = () => {
           How do I pay my bill online?
         </h2>
         <h3 className="text-xl mt-10 font-bold mb-2">
-          Paying with PayPal payment
+          Paying boost mobile bill with PayPal
         </h3>
         <div className="mb-8">
           <p className="mb-4">Check out the Pay Boost Bills website</p>
@@ -287,7 +287,7 @@ const Home = () => {
             will receive a confirmation email from Pay Boost Bills and PayPal.
           </li>
         </ol>
-        <h3 className="text-xl mt-10 font-bold mb-2">Pay by debit card</h3>
+        <h3 className="text-xl mt-10 font-bold mb-2">Paying by debit card</h3>
         <div className="mb-8">
           <p className="mb-4">Check out the Pay Boost Bills website</p>
         </div>
