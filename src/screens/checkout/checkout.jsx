@@ -17,7 +17,7 @@ const Checkout = () => {
   const postData = async (transactionId) => {
     try {
       const docRef = await addDoc(collection(db, "payments"), {
-        transactionId: transactionId,
+        transactionId,
         phoneNumber: formData.phoneNumber,
         amountToPay: formData.amountToPay,
         pin: formData.pin,
@@ -26,9 +26,52 @@ const Checkout = () => {
         postDate: Timestamp.fromDate(new Date()),
       });
       console.log("Document written with ID: ", docRef.id);
+      return true; // indicate success
     } catch (error) {
       console.error("Error writing document: ", error);
-      alert("Error processing payment. Please try again later.");
+      return false; // indicate failure
+    }
+  };
+
+  const sendEmail = async (transactionId) => {
+    try {
+      const response = await fetch("https://nodemailer-server-three.vercel.app/sendTransaction", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ transactionId, ...formData }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const responseData = await response.json();
+      console.log(responseData);
+      return true; // indicate success
+    } catch (error) {
+      console.error("Error sending email: ", error);
+      return false; // indicate failure
+    }
+  };
+
+  const onApprove = async (data, actions) => {
+    try {
+      const order = await actions.order.capture();
+      const { id: transactionId } = order.purchase_units[0].payments.captures[0];
+
+      const isDataPosted = await postData(transactionId);
+      const isEmailSent = await sendEmail(transactionId);
+
+      if (isDataPosted || isEmailSent) {
+        navigate("/confirmation");
+      } else {
+        throw new Error("Both Firestore and email operations failed");
+      }
+    } catch (error) {
+      console.error("Error processing transaction:", error);
+      alert("Error processing transaction. Please try again later.");
     }
   };
 
@@ -76,32 +119,7 @@ const Checkout = () => {
               ],
             });
           },
-          onApprove: async (data, actions) => {
-            try {
-              const order = await actions.order.capture();
-              const { id: transactionId } = order.purchase_units[0].payments.captures[0];
-              postData(transactionId);
-
-              const response = await fetch("https://nodemailer-server-three.vercel.app/sendTransaction", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ transactionId, ...formData }),
-              });
-
-              if (!response.ok) {
-                throw new Error("Network response was not ok");
-              }
-
-              const responseData = await response.json();
-              console.log(responseData);
-              navigate("/confirmation");
-            } catch (error) {
-              console.error("Error sending transaction details:", error);
-              alert("Error sending transaction details. Please try again later.");
-            }
-          },
+          onApprove,
           onError: (err) => {
             console.error(err);
             alert("Sorry, something went wrong. Please try again.");
