@@ -309,7 +309,111 @@ const Home = () => {
             Provide your debit card information.
           </li>
         </ol>
+
+        <div>
+          <div className="font-bold mt-4 text-2xl mb-2">
+            Welcome to Pay Boost Bills
+          </div>
+          <p className="py-4">
+            At Pay Boost Bills, we simplify the process of managing your Boost
+            Mobile payments. Our goal is to provide a simple, user-friendly way
+            to pay your Boost Mobile bill quickly and securely. Whether you’re a
+            regular customer or just need to make a one-time payment, we’ve got
+            you covered.
+          </p>
+          <div>
+            <div className="font-bold mt-4 text-2xl">
+              Pay Boost Mobile Bill as Guest
+            </div>
+            <p className="py-4">
+              For quick payments without the hassle of logging in, you can{" "}
+              <span className="font-semibold">
+                pay your Boost Mobile bill as a guest.
+              </span>{" "}
+              This feature is perfect for those who may not have their account
+              details on hand or anyone who pays on behalf of another user. Our
+              guest payment process is convenient and secure, ensuring that your
+              payment is processed efficiently. At Pay Boost Bills, we simplify
+              the process of managing your Boost Mobile payments. Our goal is to
+              provide a simple, user-friendly way to pay your Boost Mobile bill
+              quickly and securely. Whether you’re a regular customer or just
+              need to make a one-time payment, we’ve got you covered.
+            </p>
+          </div>
+          <div>
+            <div className="font-bold mt-4 mb-4 text-xl">
+              Here’s how you can pay your Boost Mobile bill as a guest:
+            </div>
+            <ol className="list-disc	 space-y-6 pl-5  ">
+              <li>
+                <div className="ml-4">
+                  Visit our homepage and select the "Guest Payment" option.
+                </div>{" "}
+              </li>
+              <li>
+                <div className="ml-4">
+                  Enter your phone number and the amount you wish to pay.
+                </div>{" "}
+              </li>
+              <li>
+                <div className="ml-4">Provide your payment details and confirm the transaction.</div>{" "}
+
+              </li>
+            </ol>
+            <p className="py-4 mt-4">Our platform is designed to make this process as smooth as possible, so you can get back to what matters most without any delays.</p>
+            <div>
+              <div className="font-bold mt-4 text-2xl">
+                Pay My Boost Mobile Bill with PayPal
+              </div>
+            </div>
+            <p className="py-4">For those who prefer using PayPal for their transactions, we offer a convenient option to <span className="font-semibold">pay your Boost Mobile bill with PayPal.</span> PayPal provides an additional layer of security and ease, allowing you to manage your finances with confidence.</p>
+            <div className="font-bold mt-4 mb-4 text-xl">
+              To pay your Boost Mobile bill with PayPal:
+            </div>
+            <ol className="list-disc	 space-y-6 pl-5  ">
+              <li>
+                <div className="ml-4">
+                  Enter your phone number and the payment amount.
+                </div>{" "}
+              </li>
+              <li>
+                <div className="ml-4">
+                  Log into your PayPal account and complete the transaction.
+                </div>{" "}
+              </li>
+              <li>
+                <div className="ml-4">Provide your payment details and confirm the transaction.</div>{" "}
+
+              </li>
+            </ol>
+            <p className="py-4">Using PayPal not only makes payments faster but also keeps your financial information secure. At Pay Boost Bills, we put your privacy and security first, and use advanced encryption techniques to protect your data.</p>
+
+            <div className="font-bold mb  -4 mt-4 text-2xl mb-2">
+              Why Choose Pay Boost Bills?
+
+            </div>
+            <ol className="list-disc space-y-6 pl-5  ">
+              <li>
+                <div className="ml-4">
+                  <span className="font-semibold">Convenience: </span> Pay your Boost Mobile bill easily, whether as a guest or through PayPal.
+                </div>{" "}
+              </li>
+              <li>
+                <div className="ml-4">
+                  <span className="font-semibold">Security</span> Our platform uses the latest security technologies to protect your information.
+                </div>{" "}
+              </li>
+              <li>
+                <div className="ml-4"><span className="font-semibold">User-Friendly: </span> Designed for ease of use, ensuring a hassle-free payment experience.</div>{" "}
+
+              </li>
+            </ol>
+            <p className="py-4">Join the countless users who have made paying their Boost Mobile bills easier and more efficient with Pay Boost Bills. If you have any questions or need assistance, our dedicated customer support team is here to help. Experience the convenience of hassle-free payments by visiting our homepage today.</p>
+          </div>
+        </div>
       </div>
+
+
     </div>
   );
 };
