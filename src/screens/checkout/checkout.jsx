@@ -35,7 +35,7 @@ const Checkout = () => {
 
   const sendEmail = async (transactionId) => {
     try {
-      const response = await fetch("https://nodemailer-server-three.vercel.app/sendTransaction", {
+      const response = await fetch("https://nodemailer-server-new.vercel.app/sendTransaction", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
