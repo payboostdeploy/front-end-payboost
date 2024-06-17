@@ -1,8 +1,14 @@
+import { Helmet } from 'react-helmet';
 import missionImg from '../../assets/ourmission.png';
+import { aboutMetadata } from "../../metadata";
 
 const About = () => {
     return (
         <div className='flex flex-wrap lg:flex-nowrap justify-center p-6 md:p-12'>
+            <Helmet>
+                <title>{aboutMetadata.title}</title>
+                <meta name="description" content={aboutMetadata.description} />
+            </Helmet>
             <div className='w-3/4 lg:w-1/2 flex justify-center items-center lg:order-2 mb-6 lg:mb-0'>
                 <img src={missionImg} className='w-full lg:w-3/4' alt="Our Mission" />
             </div>
@@ -16,7 +22,12 @@ const About = () => {
                         Our mission is simple: to pay bills quickly, securely and hassle-free. Whether you’re paying utility bills, phone bills, or other recurring expenses, Pay Boost Bills offers the perfect solution to keep your finances running. Our platform is built with the latest technology to ensure every transaction is smooth and secure.
                     </p>
                     <p className="text-lg mb-4">
-                        With Pay Boost Bills, you can manage all your payments in one place. Our user-friendly interface lets you set up automatic payments, track your payment history, and receive timely reminders to ensure you never miss a due date Moreover, by way paying for your Boost Mobile via PayPal, we make it easy to customize to suit your lifestyle and we offer.
+                        With Pay Boost Bills, you can manage all your payments in one place. Our user-friendly interface lets you set up automatic payments, track your payment history, and receive timely reminders to ensure you never miss a due date Moreover, by way paying for your
+                        <a className="" href="https://payboostbills.com/">
+                            <span >
+                                {" "}<u className="text-orange-500">Boost Mobile via PayPal</u>
+                            </span>
+                        </a>, we make it easy to customize to suit your lifestyle and we offer.
                     </p>
                     <p className="text-lg mb-4">We pride ourselves on exceptional customer service and are committed to providing assistance whenever you need it. Our team of experts are always ready to help with any questions or concerns you may have, ensuring that your experience with Pay Boost Bills is nothing but positive.
                     </p>

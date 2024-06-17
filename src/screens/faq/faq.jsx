@@ -1,6 +1,16 @@
+
+import { Helmet } from 'react-helmet';
+import { faqMetadata } from '../../metadata';
+
+
+
 const Faq = () => {
     return (
         <>
+            <Helmet>
+                <title>{faqMetadata.title}</title>
+                <meta name="description" content={faqMetadata.description} />
+            </Helmet>
             <div>
                 <h1 className="text-center text-5xl cursor-default font-semibold my-10">Frequently Asked Questions</h1>
             </div>

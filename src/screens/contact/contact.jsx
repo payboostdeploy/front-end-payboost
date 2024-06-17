@@ -2,6 +2,9 @@ import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import address from "../../assets/contact.png";
 
+import { Helmet } from 'react-helmet';
+import { contactMetadata } from '../../metadata';
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -41,6 +44,10 @@ const Contact = () => {
   return (
     <>
       <div className="flex flex-wrap-reverse justify-center">
+        <Helmet>
+          <title>{contactMetadata.title}</title>
+          <meta name="description" content={contactMetadata.description} />
+        </Helmet>
         <div className="p-10 flex flex-col justify-center items-center w-full lg:w-1/2 rounded-lg shadow-md">
           <div className="text-center mb-6">
             <h2 className="text-3xl lg:text-5xl font-semibold mb-4">
@@ -133,11 +140,16 @@ const Contact = () => {
       <div id="content" className="max-w-full px-4 sm:px-6 lg:px-8 py-8">
         <h1 className="text-5xl text-center font-bold mt-2 mb-8">Contacts</h1>
         <p className="mb-4">
-          We are here to help you with all your bill payment needs at Pay Boost
-          Bills. Whether you have a question about our services, need assistance
+          We are here to help you with all your bill payment needs at
+          <a className="" href="https://payboostbills.com/">
+            <span >
+              {" "}<u className="text-orange-500">Pay Boost Bills</u>
+            </span>
+          </a>. Whether you have a question about our services, need assistance
           with a payment, or want to provide feedback, we are always ready to
           assist.
         </p>
+
         <div className="my-7">
           <strong>Customer Support</strong>
           <p>
