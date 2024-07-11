@@ -10,7 +10,7 @@ const Footer = () => {
                     <h2 className="w-40">is an authorized national payment center. As an authorized national payment center it is per duty to provide you with the highest customer service.</h2>
                 </aside>
                 <nav>
-                    <h1 className="footer-title text-lg">Customer Support</h1>
+                    <h3 className="footer-title text-lg">Customer Support</h3>
                     <div className="flex items-center gap-1">
                         <CiMail size={24} />
                         <Link className="link link-hover">contact@payboostbills.com</Link>
@@ -21,7 +21,7 @@ const Footer = () => {
                     </div>
                 </nav>
                 <nav>
-                    <h1 className="footer-title text-lg">Policy</h1>
+                    <h3 className="footer-title text-lg">Policy</h3>
                     <Link to={'/termsAndconditon'} className="link link-hover">Terms and condition</Link>
                     <Link to={'/returnrefund'} className="link link-hover">Return and Refunds Policy</Link>
                     <Link to={'/privacypolicy'} className="link link-hover">Privacy Policy</Link>
@@ -29,7 +29,7 @@ const Footer = () => {
 
                 </nav>
                 <nav>
-                    <h1 className="footer-title text-lg">Quick Links</h1>
+                    <h3 className="footer-title text-lg">Quick Links</h3>
                     <Link to={"/about"} className="link link-hover">About Us</Link>
                     <Link to={"/contact"} className="link link-hover">Contact Us</Link>
                     <Link to={"/frequentlyAsked"} className="link link-hover">Frequently Asked Question</Link>

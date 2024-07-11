@@ -119,9 +119,9 @@ const Home = () => {
             Boost Mobile Refill
           </h1>
           <div className="form-control">
-            <h1 className="text-lg font-semibold">
+            <h2 className="text-lg font-semibold">
               Let's start with the phone number you want to pay
-            </h1>
+            </h2>
             <label className="label">
               <span className="label-text">Phone Number</span>
             </label>
@@ -155,10 +155,10 @@ const Home = () => {
           </div>
           <hr />
           <div className="form-control">
-            <h1 className="text-lg font-semibold">
+            <h2 className="text-lg font-semibold">
               Please let us know how much money should be added to your Boost
               Mobile number.
-            </h1>
+            </h2>
             <label className="label">
               <span className="label-text">Amount to Pay</span>
             </label>
