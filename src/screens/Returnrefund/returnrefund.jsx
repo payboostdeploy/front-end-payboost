@@ -14,7 +14,7 @@ const returnrefund = () => {
           <p className='p-4'>In the event that the company fails in any case due to incorrect phone number or incorrect scheduling, our system automatically issues a full refund immediately.</p>
 
           <h2 className="text-2xl p-4">The Work Is Completed.</h2>
-          <p className="p-4">Since this is a Prepaid Phone Service platform, once you pay for your phone through PayYourPhoneBill.com using the API through the carrier, there will be no refunds.</p>
+          <p className="p-4">Since this is a Prepaid Phone Service platform, once you pay for your phone through Payboostbills.com using the API through the carrier, there will be no refunds.</p>
 
           <h2 className="text-2xl p-4">Doubts and other questions</h2>
           <p className='p-4'>If you believe your card has not been charged on this website or if you have any questions, please contact us immediately.</p>
