@@ -18,7 +18,7 @@ const returnrefund = () => {
 
           <h2 className="text-2xl p-4">Doubts and other questions</h2>
           <p className='p-4'>If you believe your card has not been charged on this website or if you have any questions, please contact us immediately.</p>
-          <p className='p-4'>After the payment is posted no refund can be provided and refunded payments takes upto 2-3 working days to reflect back and also depends on your financial institution</p>
+          <p className='p-4'>After the payment is posted no refund can be provided please contact our custumer support for a refund within 10 minutes (before payment is posted to your provider)</p>
           <p className='p-4'>By email 24hrs: contact@payboostbills.com or</p>
           <p className='p-4'><b>Customer Support: </b>+1 (833) 443-3203/ Office Hours 9am to 7pm CST (Monday through Sunday) National Holidays (closed)</p>
 
