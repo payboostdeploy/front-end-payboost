@@ -7,6 +7,7 @@ const Checkout = () => {
   const [formData, setFormData] = useState({
     phoneNumber: "",
     amountToPay: "",
+    accountHolder: "",
     pin: "",
   });
   const [pay, setPay] = useState(null);
@@ -20,6 +21,7 @@ const Checkout = () => {
         transactionId,
         phoneNumber: formData.phoneNumber,
         amountToPay: formData.amountToPay,
+        accountHolderName: formData.accountHolder,
         pin: formData.pin,
         totalAmount: pay,
         status: "Pending",
@@ -138,6 +140,15 @@ const Checkout = () => {
     <div className="container flex justify-center flex-col mx-auto p-6">
       <div className="card shadow-2xl bg-base-300 rounded-md p-6">
         <h1 className="text-3xl font-bold mb-4">Checkout</h1>
+        <div className="mb-4 flex items-end justify-between border-b pb-2">
+          <div>
+            <h2 className="text-xl font-semibold">Account Hoder Name</h2>
+            <p>This is the Account holder name.</p>
+          </div>
+          <div className="flex flex-col justify-end">
+            <p className="text-lg mt-2">{formData.accountHolder}</p>
+          </div>
+        </div>
         <div className="mb-4 flex items-end justify-between border-b pb-2">
           <div>
             <h2 className="text-xl font-semibold">Phone Number</h2>

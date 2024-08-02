@@ -5,6 +5,7 @@ import { FaArrowAltCircleRight } from "react-icons/fa";
 
 const Home = () => {
   const [limitOnAmount, setAmountLimit] = useState();
+  const [nameError, setNameError] = useState("");
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     phoneNumber: "+1",
@@ -15,22 +16,32 @@ const Home = () => {
 
   const inputRef = useRef(null);
   const SecinputRef = useRef(null);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === "accountHolder") {
+      if (/\d/.test(value)) {
+        setNameError("Account Holder Name should not contain numbers");
+        return;
+      }
+      if (value.length < 3) {
+        setNameError("Account Holder Name should be at least 3 characters");
+        return;
+      } else {
+        setNameError("");
+      }
+    }
+
     if (name === "phoneNumber" || name === "confirmPhoneNumber") {
       if (!value.startsWith("+1")) return;
       if (value.length > 12) return;
     }
     if (name === "pin") {
       if (value.length > 4) return;
-      // Prevent negative pin numbers
       if (parseInt(value) < 0) return;
     }
     if (name === "amountToPay") {
-      // Prevent negative amount
       if (parseInt(value) < 0) return;
-      // Prevent amount starting with 0
       if (value.startsWith("0")) return;
       if (value > 200) {
         setAmountLimit("Amount must be in between 10 and 200");
@@ -45,6 +56,7 @@ const Home = () => {
       [name]: value,
     });
   };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -120,8 +132,26 @@ const Home = () => {
           </h1>
           <div className="form-control">
             <h2 className="text-lg font-semibold">
-              Let's start with the phone number you want to pay
+              Let's start with the Account holder name you want to pay
             </h2>
+            <label className="label">
+              <span className="label-text">Account Holder Name</span>
+            </label>
+            <div className="flex flex-col md:flex-row">
+              <input
+                type="text"
+                placeholder="Full Name"
+                className="input input-bordered w-full"
+                name="accountHolder"
+                value={formData.accountHolder}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            {nameError && <p className="text-red-600 mt-3">{nameError}</p>}
+          </div>
+
+          <div className="form-control">
             <label className="label">
               <span className="label-text">Phone Number</span>
             </label>
